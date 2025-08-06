@@ -4,8 +4,10 @@
 # Libraries required:
 # - pandas: to read and process CSV file
 # - jinja2: to build the HTML file from the template
+# - weasyprint: to create PDF from HTML file
 import pandas as pd
 from jinja2 import Environment, FileSystemLoader
+from weasyprint import HTML
 import os
 import json
 from datetime import datetime
@@ -78,6 +80,12 @@ if __name__ == "__main__":
         show_colors=True
     )
 
-    # Save output to file
-    with open("kanji_grid.html", "w", encoding="utf-8") as f:
+    # Save output to HTML file
+    html_file = "kanji_grid.html"
+    with open(html_file, "w", encoding="utf-8") as f:
         f.write(output)
+
+    # Convert HTML to PDF
+    html = HTML(filename=html_file)
+    html.write_pdf('kanji_grid.pdf')
+    print("Run successful.")
