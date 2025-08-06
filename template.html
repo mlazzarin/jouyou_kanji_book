@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanji Grid</title>
     <style>
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
         .grid-container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -55,13 +61,13 @@
             font-size: 120px;
         }
 
-        .reading-within {
+        .reading-kun {
             font-size: 24px;
             color: #666;
             margin-bottom: 3px;
         }
 
-        .reading-beyond {
+        .reading-on {
             font-size: 24px;
             color: #666;
             margin-bottom: 8px;
@@ -86,10 +92,9 @@
                 <div class="kanji-plain">{{ card.kanji }}</div>
                 <div class="kanji-order">{{ card.kanji }}</div>
             </div>
-            <div class="reading-within">{{ card.reading_within }}</div>
-            <div class="reading-beyond">{{ card.reading_beyond }}</div>
-            <div class="meaning">{{ card.meaning_on }}</div>
-            <div class="meaning">{{ card.meaning_kun }}</div>
+            <div class="reading-kun">{{ card.readings_kun }}</div>
+            <div class="reading-on">{{ card.readings_on }}</div>
+            <div class="meaning">{{ card.meanings }}</div>
         </div>
         {% endfor %}
     </div>
