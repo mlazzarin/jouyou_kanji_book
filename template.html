@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanji Grid</title>
     <style>
+        :root {
+            --grade-color-1: #c6f9f1;
+            --grade-color-2: #f4ffc3;
+            --grade-color-3: #ffe3fa;
+            --grade-color-4: #ccffc2;
+            --grade-color-5: #ffd8d8;
+            --grade-color-6: #e1e3ff;
+            --grade-color-7: #ffdddd;
+        }
 
         @page {
             size: A4;
@@ -23,6 +32,30 @@
             padding: 15px;
             text-align: center;
             position: relative;
+            background-color: #fff;
+        }
+
+        /* Colori pastello per ogni grado */
+        .colors-enabled .kanji-card[data-grade="小1"] {
+            background-color: var(--grade-color-1);
+        }
+        .colors-enabled .kanji-card[data-grade="小2"] {
+            background-color: var(--grade-color-2);
+        }
+        .colors-enabled .kanji-card[data-grade="小3"] {
+            background-color: var(--grade-color-3);
+        }
+        .colors-enabled .kanji-card[data-grade="小4"] {
+            background-color: var(--grade-color-4);
+        }
+        .colors-enabled .kanji-card[data-grade="小5"] {
+            background-color: var(--grade-color-5);
+        }
+        .colors-enabled .kanji-card[data-grade="小6"] {
+            background-color: var(--grade-color-6);
+        }
+        .colors-enabled .kanji-card[data-grade="中"] {
+            background-color: var(--grade-color-7);
         }
 
         .numbers {
@@ -63,13 +96,11 @@
 
         .reading-kun {
             font-size: 24px;
-            color: #666;
             margin-bottom: 3px;
         }
 
         .reading-on {
             font-size: 24px;
-            color: #666;
             margin-bottom: 8px;
         }
 
@@ -94,13 +125,13 @@
         }
     </style>
 </head>
-<body>
+<body class="{{ 'colors-enabled' if show_colors else '' }}">
     <div class="grid-container">
         {% for card in kanji_cards %}
         <div class="kanji-card" data-level="{{ card.jlpt_level }}" data-grade="{{ card.school_grade }}">
             <div class="numbers">
                 <span class="cell-number">{{ card.number }}</span>
-                <span class="grade-numbers">{{ card.jlpt_level }}・小{{ card.school_grade }}</span>
+                <span class="grade-numbers">{{ card.jlpt_level }}・{{ card.school_grade }}</span>
             </div>
             <div class="kanji-container">
                 <div class="kanji-plain">{{ card.kanji }}</div>
