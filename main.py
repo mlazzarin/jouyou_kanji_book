@@ -7,6 +7,7 @@
 import pandas as pd
 from jinja2 import Environment, FileSystemLoader
 import os
+import json
 
 
 def truncate(text, maxlen=30):
@@ -17,8 +18,11 @@ def truncate(text, maxlen=30):
 
 
 if __name__ == "__main__":
-    # Load Kanji data from CSV file and select relevant columns
-    # Data source: https://www.kanjidatabase.com/
+    # Load Kanji data from data sources and select relevant columns
+    # Data source:
+    # https://www.kanjidatabase.com/
+    # https://github.com/scriptin/jmdict-simplified
+    # https://www.edrdg.org/wiki/index.php/Main_Page
     df = pd.read_csv("kanji_database.csv", encoding="utf-8", sep=";")
     df = df[[
         "id",
@@ -26,13 +30,10 @@ if __name__ == "__main__":
         "Strokes",
         "Grade",
         "JLPT-test",
-        "Reading within Joyo",
-        "Reading beyond Joyo",
-        "Translation of On",
-        "Translation of Kun",
         "Kanji Frequency with Proper Nouns"
     ]]
-    df["Reading beyond Joyo"] = df["Reading beyond Joyo"].fillna("")
+    with open("kanjidic2-en-3.6.1.json", "r", encoding="utf-8") as f:
+        kanjidic_data = json.load(f)  # used for kanji meanings and readings
 
     # Order by grade, number of strokes and id
     df_sorted = df.sort_values(by=["Grade", "Strokes", "id"], ascending=[True, True, True])
@@ -40,17 +41,31 @@ if __name__ == "__main__":
     # Prepare data for Jinja2
     kanji_cards = []
     for _, row in df_sorted.iterrows():
-        meaning_on = f"On: {row['Translation of On']}"
-        meaning_kun = f"Kun: {row['Translation of Kun']}"
+
+        # Most info are from kanji database
+        kanji_info = {
+            "number": row["id"],
+            "kanji": row["Kanji"],
+            "jlpt_level": row["JLPT-test"],
+            "school_grade": row["Grade"]
+        }
+        # Get readings and meanings from kanjidic_data
+        kanji_entry = next((k for k in kanjidic_data["characters"] if k["literal"] == kanji_info["kanji"]), None)
+        assert kanji_entry is not None, f"Kanji {row['Kanji']} not found in kanjidic_data."
+        readings = kanji_entry["readingMeaning"]["groups"][0]["readings"]
+        readings_on = ", ".join([reading["value"] for reading in readings if reading["type"] == "ja_on"])
+        readings_kun = ", ".join([reading["value"] for reading in readings if reading["type"] == "ja_kun"])
+        meanings = kanji_entry["readingMeaning"]["groups"][0]["meanings"]
+        meanings_en = ", ".join([meaning["value"] for meaning in meanings if meaning.get("lang") == "en"])
+
         kanji_cards.append({
             "number": row["id"],
             "kanji": row["Kanji"],
             "jlpt_level": row["JLPT-test"],
             "school_grade": row["Grade"],
-            "reading_within": row["Reading within Joyo"],
-            "reading_beyond": row["Reading beyond Joyo"],
-            "meaning_on": truncate(meaning_on, 40),
-            "meaning_kun": truncate(meaning_kun, 40)
+            "readings_kun": readings_kun,
+            "readings_on": readings_on,
+            "meanings": meanings_en
         })
 
     # Set up Jinja2 environment
