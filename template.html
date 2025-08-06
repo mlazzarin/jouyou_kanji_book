@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanji Grid</title>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .kanji-card {
+            border: 2px solid #ccc;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+        }
+
+        .numbers {
+            display: flex;
+            justify-content: space-between;
+            font-size: 20px;
+            color: #666;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+        }
+
+        .cell-number {
+            text-align: left;
+        }
+
+        .grade-numbers {
+            text-align: right;
+        }
+
+        .kanji-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 2px 0 2px 0;
+        }
+
+        .kanji-plain {
+            font-family: noto-sans-jp;
+            font-size: 120px;
+        }
+
+        .kanji-order {
+            font-family: KanjiStrokeOrders;
+            font-size: 120px;
+        }
+
+        .reading-within {
+            font-size: 24px;
+            color: #666;
+            margin-bottom: 3px;
+        }
+
+        .reading-beyond {
+            font-size: 24px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .meaning {
+            font-size: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        {% for card in kanji_cards %}
+        <div class="kanji-card" data-level="{{ card.jlpt_level }}" data-grade="{{ card.school_grade }}">
+            <div class="numbers">
+                <span class="cell-number">{{ card.number }}</span>
+                <span class="grade-numbers">{{ card.jlpt_level }}・小{{ card.school_grade }}</span>
+            </div>
+            <div class="kanji-container">
+                <div class="kanji-plain">{{ card.kanji }}</div>
+                <div class="kanji-order">{{ card.kanji }}</div>
+            </div>
+            <div class="reading-within">{{ card.reading_within }}</div>
+            <div class="reading-beyond">{{ card.reading_beyond }}</div>
+            <div class="meaning">{{ card.meaning_on }}</div>
+            <div class="meaning">{{ card.meaning_kun }}</div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
