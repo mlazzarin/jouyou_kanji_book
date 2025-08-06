@@ -8,6 +8,7 @@ import pandas as pd
 from jinja2 import Environment, FileSystemLoader
 import os
 import json
+from datetime import datetime
 
 
 def truncate(text, maxlen=30):
@@ -73,7 +74,7 @@ if __name__ == "__main__":
     template = env.get_template("template.html")
 
     # Render template
-    output = template.render(kanji_cards=kanji_cards)
+    output = template.render(kanji_cards=kanji_cards, creation_date=datetime.now().strftime("%Y-%m-%d"))
 
     # Save output to file
     with open("kanji_grid.html", "w", encoding="utf-8") as f:
