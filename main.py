@@ -79,7 +79,7 @@ if __name__ == "__main__":
     )
 
     # Save output to HTML file
-    html_file = "kanji_grid.html"
+    html_file = "output.html"
     with open(html_file, "w", encoding="utf-8") as f:
         f.write(output)
     print("Run successful.")
