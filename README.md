@@ -1,8 +1,11 @@
 # Jouyou Kanji (常用漢字) Book
 
-A simple PDF book with all 2136 jouyou kanji (常用漢字).
+A simple book with all 2136 jouyou kanji (常用漢字).
 Made for self-study according to my preferences (double font with/without strike order, large font size).
 Kanjis are ordered by grade and stroke order.
+
+You can find the book at this [link](https://mlazzarin.github.io/jouyou_kanji_book/output.html), you can print it or save it to PDF directly from the browser.
+
 
 ### Data Sources
 
