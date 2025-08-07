@@ -2,5 +2,6 @@
 *.csv
 *.json
 
-# HTML output
+# Output
 *.html
+*.pdf
