@@ -20,11 +20,23 @@
             margin: 0;
         }
 
+        @media print {
+            .button-selector, .text-no-print {
+                display: none;
+            }
+        }
+
         .grid-container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 15px;
             padding: 20px;
+        }
+
+        @media screen and (max-width: 479px) {
+            .grid-container {
+                grid-template-columns: repeat(1, 1fr);
+            }
         }
 
         .kanji-card {
@@ -33,6 +45,11 @@
             text-align: center;
             position: relative;
             background-color: #fff;
+            border-radius: 10px;
+        }
+
+        .kanji-card:hover {
+            border: 4px solid #000000;
         }
 
         /* Colori pastello per ogni grado */
@@ -62,7 +79,7 @@
             display: flex;
             justify-content: space-between;
             font-size: 20px;
-            color: #666;
+            color: #000000;
             position: absolute;
             top: 5px;
             left: 5px;
@@ -125,6 +142,29 @@
             margin: 8px 0;
             line-height: 1.5;
         }
+
+        .button-selector {
+            border: 2px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+        .button-selector:hover {
+            background-color: #ccc;
+        }
+        .button-selector:focus {
+            background-color: #000000;
+            color: #fff;
+            border: 2px solid #000000;
+        }
+
+        .text-no-print {
+            font-size: 16px;
+            color: #000000;
+            font-style: bold;
+        }
     </style>
 </head>
 <body class="{{ 'colors-enabled' if show_colors else '' }}">
@@ -143,6 +183,21 @@
         <p style="margin-top: 10px; margin-bottom: 10px">
             <img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" alt="CC BY-SA 4.0" style="vertical-align: middle;">
         </p>
+        <div class="text-no-print" id="column_selector" style="margin-top: 20px; text-align: center;">
+            Select the number of columns:
+            <button onClick="set_num_columns(1)" class="button-selector">1</button>
+            <button onClick="set_num_columns(2)" class="button-selector">2</button>
+            <button onClick="set_num_columns(3)" class="button-selector">3</button>
+            <button onClick="set_num_columns(4)" class="button-selector">4</button>
+            <button onClick="set_num_columns(5)" class="button-selector">5</button>
+            <button onClick="set_num_columns(6)" class="button-selector">6</button>
+        </div>
+        <script>
+            function set_num_columns(num) {
+                const container = document.querySelector('.grid-container');
+                container.style.gridTemplateColumns = `repeat(${num}, 1fr)`;
+            }
+        </script>
     </header>
     <div class="grid-container">
         {% for card in kanji_cards %}
