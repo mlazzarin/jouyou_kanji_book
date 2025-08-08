@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanji Grid</title>
-    /* Import Noto Sans JP and Noto Serif JP from Google Fonts */
-    /* Weight 400 (normal) and 700 (bold) */
+    <!-- Import Noto Sans JP and Noto Serif JP from Google Fonts -->
+    <!-- Weight 400 (normal) and 700 (bold) -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@400;700" rel="stylesheet">
     <style>
         :root {
@@ -106,12 +106,18 @@
 
         .kanji-plain {
             font-family: 'Noto Sans JP', sans-serif;
-            font-size: 120px;
+            font-size: 104px;
+        }
+
+        @font-face {
+            font-family: KanjiStrokeOrders;
+            src: local('KanjiStrokeOrders');
+            size-adjust: 115.4%;
         }
 
         .kanji-order {
             font-family: KanjiStrokeOrders, 'Noto Serif JP', serif;
-            font-size: 120px;
+            font-size: 104px;
         }
 
         .reading-kun {
