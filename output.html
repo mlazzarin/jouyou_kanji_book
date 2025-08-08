@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanji Grid</title>
+    /* Import Noto Sans JP and Noto Serif JP from Google Fonts */
+    /* Weight 400 (normal) and 700 (bold) */
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@400;700" rel="stylesheet">
     <style>
         :root {
             --grade-color-1: #cefff8;
@@ -102,12 +105,12 @@
         }
 
         .kanji-plain {
-            font-family: noto-sans-jp;
+            font-family: 'Noto Sans JP', sans-serif;
             font-size: 120px;
         }
 
         .kanji-order {
-            font-family: KanjiStrokeOrders;
+            font-family: KanjiStrokeOrders, 'Noto Serif JP', serif;
             font-size: 120px;
         }
 
@@ -183,13 +186,14 @@
 
     <header class="header-info">
         <p style="font-size: 30px; font-weight: bold; margin-bottom: 10px;">Jouyou Kanji Book</p>
-        <p>Author: Marco Lazzarin <a href="https://github.com/mlazzarin" style="color: #666; text-decoration: underline;">(github.com/mlazzarin)</a>, created on 2025-08-07.</p>
+        <p>Author: Marco Lazzarin <a href="https://github.com/mlazzarin" style="color: #666; text-decoration: underline;">(github.com/mlazzarin)</a>, created on 2025-08-08.</p>
         <h3 style="margin-top: 15px; margin-bottom: 10px; font-size: 16px;">Data Sources:</h3>
         <p>Tamaoka, K., Makioka, S., Sanders, S. & Verdonschot, R.G. (2017). <a href="https://www.kanjidatabase.com" style="color: #666; text-decoration: underline;">www.kanjidatabase.com</a>: A new interactive online database for psychological and linguistic research on Japanese kanji and their compound words. Psychological Research. 81, 696-708.</p>
         <p>The document uses the <a href="https://www.edrdg.org/wiki/KANJIDIC_Project.html" style="color: #666; text-decoration: underline;">KANJIDIC</a> dictionary file. These files are the property of the <a href="https://www.edrdg.org" style="color: #666; text-decoration: underline;">Electronic Dictionary Research and Development Group</a>, and are used in conformance with the Group's <a href="https://www.edrdg.org/edrdg/licence.html" style="color: #666; text-decoration: underline;">license</a>.</p>
         <p>The project uses the KANJIDIC preprocessed file from jmdict-simplified (<a href="https://github.com/scriptin/jmdict-simplified" style="color: #666; text-decoration: underline;">github.com/scriptin/jmdict-simplified</a>), and are used in conformance with its license.</p>
         <h3 style="margin-top: 15px; margin-bottom: 10px; font-size: 16px;">Fonts:</h3>
         <p><a href="https://fonts.google.com/noto/specimen/Noto+Sans+JP" style="color: #666; text-decoration: underline;">Noto Sans Japanese</a> font - Copyright 2014-2021 Adobe. Licensed under the SIL Open Font License, Version 1.1.</p>
+        <p><a href="https://fonts.google.com/noto/specimen/Noto+Serif+JP" style="color: #666; text-decoration: underline;">Noto Serif Japanese</a> font - Copyright 2012 Google Inc. Licensed under the SIL Open Font License, Version 1.1.</p>
         <p><a href="https://www.nihilist.org.uk/" style="color: #666; text-decoration: underline;">Kanji Stroke Orders</a> font - Copyright (C) 2004-2020 Ulrich Apel, the AAAA project and the Wadoku project.</p>
         <h3 style="margin-top: 15px; margin-bottom: 10px; font-size: 16px;">License:</h3>
         <p>This work is licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/" style="color: #666; text-decoration: underline;">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>

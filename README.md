@@ -16,4 +16,6 @@ Kanjis are ordered by grade and stroke order.
 
 [1] [Noto Sans Japanese](https://fonts.google.com/noto/specimen/Noto+Sans+JP) font - Copyright 2014-2021 Adobe. Licensed under the SIL Open Font License, Version 1.1.
 
-[2] [Kanji Stroke Orders](https://www.nihilist.org.uk/) font - Copyright (C) 2004-2020 Ulrich Apel, the AAAA project and the Wadoku project.
+[2] [Noto Serif Japanese](https://fonts.google.com/noto/specimen/Noto+Serif+JP) font - Copyright 2012 Google Inc. Licensed under the SIL Open Font License, Version 1.1.
+
+[3] [Kanji Stroke Orders](https://www.nihilist.org.uk/) font - Copyright (C) 2004-2020 Ulrich Apel, the AAAA project and the Wadoku project.
