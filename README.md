@@ -6,6 +6,19 @@ Kanjis are ordered by grade and stroke order.
 
 You can find the book at this [link](https://mlazzarin.github.io/jouyou_kanji_book/output.html), you can print it or save it to PDF directly from the browser.
 
+<p float="left" align="left" vertical-align="middle">
+  <img src="https://mlazzarin.github.io/jouyou_kanji_book/images/Kanji%20Grid%20Example.png" width="60%" />
+  <img src="https://mlazzarin.github.io/jouyou_kanji_book/images/Kanji%20Card%20with%20Instructions.png" width="25%" />
+</p>
+
+Legend:
+  1) Kanji Database ID;
+  2) JLPT Level and Grade;
+  3) Kanji (Noto Sans JP);
+  4) Kanji (with stroke order if [Kanji Stroke Orders](https://www.nihilist.org.uk/) font is locally installed, otherwise Noto Serif JP);
+  5) Kun Reading (訓読み);
+  6) On Reading (音読み);
+  7) Meaning.
 
 ### Data Sources
 
